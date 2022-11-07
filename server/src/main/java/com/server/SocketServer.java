@@ -44,17 +44,20 @@ public class SocketServer {
             pippo = in.readLine();
             System.out.println(pippo);
             ObjectMapper json = new ObjectMapper();
-            System.out.println("voglio morire");
+
             message j = json.readValue(pippo, message.class);
             System.out.println(j.getBiglietti()+"ciao");
-            String s = json.writeValueAsString(m);
+            
             if(j.getBiglietti().isEmpty())
             {
                 System.out.println("oh no");
+                String s = json.writeValueAsString(m);
                 out.writeBytes(s + '\n');
             }
             else {
-                out.writeBytes(s + '\n');
+                String s = json.writeValueAsString(j);
+                out.writeBytes(s+ '\n');
+                
                 System.out.println(j.getBiglietti());
             }
         }

@@ -43,7 +43,7 @@ public class SocketClient {
             serverString = in.readLine();
             message j = json.readValue(serverString, message.class);
             System.out.println("Risposta dal server: " + '\n' + j.getBiglietti());
-            System.out.println("Seleziona un bigletto tramite nome es(" + j.getBiglietti().get(0).getNome()+")");
+            System.out.println("Seleziona un bigletto tramite nome es(" + j.getBiglietti().get(1).getNome()+")");
             this.userString = this.keyboard.nextLine();
             System.out.println("user: "+ userString);
             for (Biglietto i : j.getBiglietti()) {
