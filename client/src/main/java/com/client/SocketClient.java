@@ -1,7 +1,11 @@
 package com.client;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Scanner;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SocketClient {
@@ -55,6 +59,7 @@ public class SocketClient {
             }
             System.out.println("ciao: "+j.getBiglietti());
             s = json.writeValueAsString(j);
+            out.writeBytes(s + '\n');
             
         }
         socket.close();

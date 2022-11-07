@@ -15,7 +15,7 @@ public class Biglietto {
 
     @Override
     public String toString() {
-        return "Biglietto " + nome + "-" + posto ;
+        return "Biglietto: " + nome + "-" + posto ;
     }
     public String getNome() {
         return nome;
