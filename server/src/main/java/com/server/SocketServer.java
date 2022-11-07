@@ -37,20 +37,20 @@ public class SocketServer {
         }
     }
     public void communicate(Socket client, message m) throws IOException {
-        String pippo ="";
-        while(!pippo.toUpperCase().equals("FINE")){
+        String strUser ="";
+        while(!strUser.toUpperCase().equals("FINE")){
             BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
             DataOutputStream out = new DataOutputStream(client.getOutputStream());
-            pippo = in.readLine();
-            System.out.println(pippo);
+            strUser = in.readLine();
+            System.out.println(strUser);
             ObjectMapper json = new ObjectMapper();
 
-            message j = json.readValue(pippo, message.class);
-            System.out.println(j.getBiglietti()+"ciao");
+            message j = json.readValue(strUser, message.class);
+    
             
             if(j.getBiglietti().isEmpty())
             {
-                System.out.println("oh no");
+                
                 String s = json.writeValueAsString(m);
                 out.writeBytes(s + '\n');
             }
@@ -58,7 +58,6 @@ public class SocketServer {
                 String s = json.writeValueAsString(j);
                 out.writeBytes(s+ '\n');
                 
-                System.out.println(j.getBiglietti());
             }
         }
         client.close();

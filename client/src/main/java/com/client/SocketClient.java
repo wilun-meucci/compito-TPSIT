@@ -32,7 +32,7 @@ public class SocketClient {
             message m = new message();
             String s = json.writeValueAsString(m);
             out.writeBytes(s + '\n');
-            System.out.println(s);
+            
         while (true)
         {
             if(userString.toUpperCase().equals("FINE"))
@@ -45,19 +45,19 @@ public class SocketClient {
             System.out.println("Risposta dal server: " + '\n' + j.getBiglietti());
             System.out.println("Seleziona un bigletto tramite nome es(" + j.getBiglietti().get(1).getNome()+")");
             this.userString = this.keyboard.nextLine();
-            System.out.println("user: "+ userString);
+            
             for (Biglietto i : j.getBiglietti()) {
-                System.out.println(i.getNome() + i.getPosto());
+                
                 
                 if(i.getNome().equals(userString))
                 {
                     j.remove(i);
-                    System.out.println(i.getNome());
+                    
                     break;
                 }
-                System.out.println("ciao");
+                
             }
-            System.out.println("ciao: "+j.getBiglietti());
+           
             s = json.writeValueAsString(j);
             out.writeBytes(s + '\n');
             
